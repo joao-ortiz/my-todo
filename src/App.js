@@ -17,7 +17,7 @@ class App extends React.Component {
       ninjas: [...state.ninjas, ninja]
     }))
   }
-  
+  //a
   render() {
     return (
     <div className="App">
