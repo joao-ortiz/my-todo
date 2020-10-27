@@ -1,25 +1,35 @@
-import logo from './logo.svg';
 import './App.css';
+import React from 'react';
 
-function App() {
-  return (
+import AddNinja from './AddNinja'
+import Ninjas from './Ninjas'
+
+class App extends React.Component { 
+  constructor(props) {
+    super(props)
+    this.state = {ninjas: [{ id:1, name: "Ryu", age: 30, belt: "Black" }, {id:2, name: "Paulo", age: 22, belt: "Black" }]}
+
+    this.handleNinjaAdd =  this.handleNinjaAdd.bind(this)
+  }
+
+  handleNinjaAdd(ninja) {
+    this.setState((state) => ({
+      ninjas: [...state.ninjas, ninja]
+    }))
+  }
+  
+  render() {
+    return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>My first app</h1>
+        <p>salve</p>
+        <AddNinja handleNinjaAdd={this.handleNinjaAdd}/>
+        <Ninjas ninjas={this.state.ninjas} />
       </header>
     </div>
-  );
+    )
+  };
 }
 
 export default App;
